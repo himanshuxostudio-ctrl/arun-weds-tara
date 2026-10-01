@@ -7,23 +7,25 @@ export default function ThankYou() {
     <section
       id="thank-you"
       aria-label="Thank You"
-      className="relative flex min-h-[100svh] items-stretch overflow-hidden bg-plum text-ivory-paper"
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-plum text-ivory-paper lg:flex-row"
     >
-      <img
-        src={seatedImg}
-        alt="Arun & Tara seated together, hand in hand, beneath white floral garlands"
-        className="absolute inset-0 h-full w-full object-cover object-top opacity-90"
-        loading="lazy"
-        width={1332}
-        height={2000}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-plum-deep via-plum/80 to-plum/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-plum-deep/95 via-plum/60 to-transparent sm:from-plum-deep/90" />
+      <div className="relative order-2 flex-1 lg:order-1 lg:w-[54%]">
+        <div className="relative h-[52vh] w-full sm:h-[60vh] lg:h-full">
+          <img
+            src={seatedImg}
+            alt="Arun & Tara seated together, hand in hand, beneath white floral garlands"
+            className="h-full w-full object-cover object-top"
+            loading="lazy"
+            width={1332}
+            height={2000}
+          />
+        </div>
+      </div>
 
-      <FloatingPetals count={10} />
+      <div className="relative order-1 flex flex-1 items-center justify-center overflow-hidden px-6 py-16 text-center sm:py-20 lg:order-2 lg:w-[46%] lg:items-center lg:px-12 lg:text-left xl:px-16">
+        <FloatingPetals count={8} />
 
-      <div className="relative z-10 flex w-full flex-col items-center justify-end px-6 pb-16 pt-28 text-center sm:items-start sm:justify-center sm:px-14 sm:py-24 sm:text-left lg:px-20">
-        <Reveal className="max-w-md">
+        <Reveal className="relative z-10 flex max-w-md flex-col items-center lg:items-start">
           <span className="font-serif text-sm font-semibold uppercase tracking-widest2 text-blush-soft/90">
             From Our Hearts
           </span>
