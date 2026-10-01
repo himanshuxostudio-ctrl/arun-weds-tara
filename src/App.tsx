@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import musicSrc from './assets/audio/divine-union.mp3'
 import { useBackgroundMusic } from './hooks/useBackgroundMusic'
-import OpeningScreen from './components/OpeningScreen'
 import PaperTexture from './components/PaperTexture'
 import MusicToggle from './components/MusicToggle'
+import Invocation from './components/Invocation'
 import Hero from './components/Hero'
 import Story from './components/Story'
 import SevenSteps from './components/SevenSteps'
@@ -17,33 +17,21 @@ import ThankYou from './components/ThankYou'
 import Footer from './components/Footer'
 
 function App() {
-  const [showOpening, setShowOpening] = useState(true)
-  const [opened, setOpened] = useState(false)
   const { audioRef, isPlaying, play, toggle } = useBackgroundMusic()
 
   useEffect(() => {
-    document.body.style.overflow = showOpening ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [showOpening])
+    // Browsers block autoplay without a prior gesture; this quietly succeeds
+    // when allowed and otherwise leaves the floating toggle for the guest.
+    play()
+  }, [play])
 
   return (
     <div className="min-h-screen bg-paper-wash">
       <audio ref={audioRef} src={musicSrc} loop preload="none" />
       <PaperTexture />
 
-      {showOpening && (
-        <OpeningScreen
-          onPlayMusic={play}
-          onOpened={() => {
-            setOpened(true)
-            setShowOpening(false)
-          }}
-        />
-      )}
-
       <main>
+        <Invocation />
         <Hero />
         <Story />
         <SevenSteps />
@@ -57,7 +45,7 @@ function App() {
       </main>
       <Footer />
 
-      <MusicToggle isPlaying={isPlaying} onToggle={toggle} visible={opened} />
+      <MusicToggle isPlaying={isPlaying} onToggle={toggle} visible />
     </div>
   )
 }

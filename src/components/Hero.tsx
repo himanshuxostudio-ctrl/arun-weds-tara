@@ -20,9 +20,6 @@ export default function Hero() {
             width={1332}
             height={2000}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ivory-paper via-transparent to-transparent lg:bg-gradient-to-r lg:from-ivory-paper/0 lg:via-transparent lg:to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ivory-paper to-transparent lg:hidden" />
-          <div className="absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-ivory-paper to-transparent lg:block" />
         </div>
       </div>
 
