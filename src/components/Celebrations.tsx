@@ -1,118 +1,83 @@
-import SectionHeading from './SectionHeading'
-import Reveal from './Reveal'
-import { VineRule } from './Botanical'
+const HOME_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=H.No+5+New+Kushal+Enclave+Bhabat+Zirakpur+Punjab'
 
-type EventItem = { name: string; time: string }
-
-const dayOne: EventItem[] = [
-  { name: 'Haldi', time: '11:00 AM' },
-  { name: 'Mehndi & Sangeet', time: '7:00 PM onwards' },
-]
-
-const dayTwo: EventItem[] = [
-  { name: 'Swagat Barat', time: '7:00 PM' },
-  { name: 'Dinner', time: '8:00 PM' },
-  { name: 'Doli', time: 'Under the Stars' },
-]
-
-function DayCard({
-  dateLabel,
-  dayLabel,
-  events,
-  venue,
-  footer,
-  delay,
-}: {
-  dateLabel: string
-  dayLabel: string
-  events: EventItem[]
-  venue?: { name: string; address: string[] }
-  footer?: string
-  delay: number
-}) {
-  return (
-    <Reveal delay={delay} className="w-full">
-      <div className="flex h-full flex-col border border-charcoal/12 bg-ivory-paper/80 px-7 py-10 text-center shadow-card sm:px-10">
-        <span className="font-serif text-sm font-semibold uppercase tracking-widest2 text-rose-deep">
-          {dayLabel}
-        </span>
-        <h3 className="mt-2 font-display text-3xl font-semibold text-charcoal sm:text-4xl">
-          {dateLabel}
-        </h3>
-
-        <VineRule className="my-6 text-gold-deep/70" />
-
-        <dl className="flex flex-col gap-6">
-          {events.map((event) => (
-            <div key={event.name} className="flex flex-col items-center">
-              <dt className="font-display text-2xl font-semibold text-charcoal sm:text-[1.7rem]">
-                {event.name}
-              </dt>
-              <dd className="mt-1 font-serif text-xl font-medium text-plum sm:text-2xl">
-                {event.time}
-              </dd>
-            </div>
-          ))}
-        </dl>
-
-        {venue && (
-          <div className="mt-7 border-t border-charcoal/10 pt-6">
-            <p className="font-serif text-lg font-semibold uppercase tracking-widest2 text-charcoal">
-              {venue.name}
-            </p>
-            <p className="mt-2 font-serif text-lg leading-relaxed text-charcoal-soft">
-              {venue.address.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </p>
-          </div>
-        )}
-
-        {footer && (
-          <p className="mt-7 border-t border-charcoal/10 pt-6 font-script text-3xl text-plum sm:text-4xl">
-            {footer}
-          </p>
-        )}
-      </div>
-    </Reveal>
-  )
-}
-
+/** The two-day celebration timeline — Haldi/Mehndi/Sangeet, then Barat/Dinner/Doli/Phere. */
 export default function Celebrations() {
   return (
-    <section
-      id="celebrations"
-      aria-label="The Celebrations"
-      className="relative bg-blush-soft/60 px-6 py-24 sm:py-28"
-    >
-      <div className="mx-auto max-w-3xl">
-        <SectionHeading kicker="Save These Dates" title="The Celebrations" />
+    <section className="page celebrations" id="celebrations">
+      <div className="spray" data-flora="spray" data-seed="57" />
+      <h2 className="script-title" data-reveal="">
+        मांगलिक कार्यक्रम
+      </h2>
+
+      <div className="day" data-reveal="">
+        <p className="day-head">शुक्रवार, 20 नवंबर 2026</p>
+        <ol className="timeline">
+          <li data-reveal="">
+            <span className="tl-icon" data-flora="icon:haldi" />
+            <div>
+              <h3>हल्दी</h3>
+              <p className="time">प्रातः 11:00 बजे</p>
+            </div>
+          </li>
+          <li data-reveal="">
+            <span className="tl-icon" data-flora="icon:sangeet" />
+            <div>
+              <h3>मेहंदी एवं संगीत</h3>
+              <p className="time">सायं 7:00 बजे से</p>
+            </div>
+          </li>
+        </ol>
+        <div className="place" data-reveal="">
+          <span className="place-icon" data-flora="icon:home" />
+          <h4>निवास स्थान पर</h4>
+          <p>
+            मकान नं. 5, न्यू कुशल एन्क्लेव
+            <br />
+            शोकी जैन हॉस्पिटल के पास
+            <br />
+            भबात, ज़ीरकपुर, पंजाब
+          </p>
+          <a className="link-btn" href={HOME_MAPS_URL} target="_blank" rel="noopener">
+            रास्ता देखें
+          </a>
+        </div>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-5xl gap-8 sm:mt-16 lg:grid-cols-2">
-        <DayCard
-          dateLabel="20 November 2026"
-          dayLabel="Friday"
-          events={dayOne}
-          venue={{
-            name: 'At Home',
-            address: [
-              'H.No 5, New Kushal Enclave',
-              'Near Shoki Jain Hospital',
-              'Bhabat, Zirakpur, Punjab',
-            ],
-          }}
-          delay={0}
-        />
-        <DayCard
-          dateLabel="21 November 2026"
-          dayLabel="Saturday"
-          events={dayTwo}
-          footer="Dance · Music · Phere"
-          delay={0.15}
-        />
+      <div className="day-divider" data-flora="flourish" />
+
+      <div className="day" data-reveal="">
+        <p className="day-head">शनिवार, 21 नवंबर 2026</p>
+        <ol className="timeline">
+          <li data-reveal="">
+            <span className="tl-icon" data-flora="icon:barat" />
+            <div>
+              <h3>स्वागत बारात</h3>
+              <p className="time">सायं 7:00 बजे</p>
+            </div>
+          </li>
+          <li data-reveal="">
+            <span className="tl-icon" data-flora="icon:dinner" />
+            <div>
+              <h3>प्रीतिभोज</h3>
+              <p className="time">रात्रि 8:00 बजे</p>
+            </div>
+          </li>
+          <li data-reveal="">
+            <span className="tl-icon" data-flora="icon:doli" />
+            <div>
+              <h3>डोली</h3>
+              <p className="time time--text">तारों की छाँव में</p>
+            </div>
+          </li>
+          <li data-reveal="" className="tl-last">
+            <span className="tl-icon" data-flora="icon:phere" />
+            <div>
+              <p className="followed">तत्पश्चात</p>
+              <h3>नृत्य · संगीत · फेरे</h3>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
   )

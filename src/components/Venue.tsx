@@ -1,57 +1,35 @@
-import Reveal from './Reveal'
-import VenueMotif from './VenueMotif'
-import { SprigDivider } from './Botanical'
+const VENUE_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=The+Grand+Nimantran+NH+7+Dhakoli+Zirakpur+Punjab+160104'
 
-const VENUE_NAME = 'The Grand Nimantran'
-const ADDRESS_LINES = ['NH 7, Near Guru Nanak Service Station', 'Dhakoli, Zirakpur, Punjab – 160104']
-const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${VENUE_NAME}, ${ADDRESS_LINES.join(', ')}`,
-)}`
-
+/** The wedding venue reveal — line-art palace facade, name, address, and a map link. */
 export default function Venue() {
   return (
-    <section
-      id="venue"
-      aria-label="Wedding Venue"
-      className="relative bg-paper-wash px-6 py-24 sm:py-28"
-    >
-      <Reveal className="mx-auto flex max-w-xl flex-col items-center text-center">
-        <span className="font-serif text-sm font-semibold uppercase tracking-widest2 text-rose-deep">
-          The Wedding
-        </span>
-
-        <VenueMotif className="mt-6 h-28 w-52 text-gold-deep/80 sm:h-32 sm:w-60" />
-
-        <h2 className="mt-6 font-display text-4xl font-semibold text-charcoal sm:text-5xl">
-          {VENUE_NAME}
-        </h2>
-
-        <SprigDivider className="my-6 text-gold-deep" />
-
-        <p className="font-serif text-xl leading-relaxed text-charcoal-soft sm:text-2xl">
-          {ADDRESS_LINES.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+    <section className="page venue" id="venue">
+      <h2 className="script-title" data-reveal="">
+        शुभ विवाह
+      </h2>
+      <div className="venue-card" data-reveal="unfold">
+        <div className="venue-art-wrap" data-flora="venue" />
+        <p className="venue-name">द ग्रैंड निमंत्रण</p>
+        <p className="venue-addr">
+          एन.एच. 7, गुरु नानक सर्विस स्टेशन के पास
+          <br />
+          ढकोली, ज़ीरकपुर, पंजाब – 160104
         </p>
-
-        <p className="mt-5 font-serif text-xl font-medium tracking-wide text-plum sm:text-2xl">
-          Saturday, 21 November 2026
-        </p>
-
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="focus-ring group mt-9 inline-flex items-center gap-3 border border-plum/70 px-8 py-3 font-serif text-base uppercase tracking-widest2 text-plum transition-colors duration-500 hover:bg-plum hover:text-ivory-paper sm:px-10 sm:py-4 sm:text-lg"
-        >
-          <span>View Location</span>
-          <span className="transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true">
-            ↗
-          </span>
+        <p className="venue-date">शनिवार, 21 नवंबर 2026</p>
+        <a className="gold-btn" href={VENUE_MAPS_URL} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21s-6.5-6.2-6.5-11.2A6.5 6.5 0 0 1 18.5 9.8C18.5 14.8 12 21 12 21z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+            />
+            <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" strokeWidth="1.4" />
+          </svg>
+          <span>स्थान देखें</span>
         </a>
-      </Reveal>
+      </div>
     </section>
   )
 }

@@ -1,52 +1,46 @@
-import { useEffect } from 'react'
 import musicSrc from './assets/audio/divine-union.mp3'
-import { useBackgroundMusic } from './hooks/useBackgroundMusic'
-import PaperTexture from './components/PaperTexture'
-import MusicToggle from './components/MusicToggle'
+import { useInvitationEngine } from './useInvitationEngine'
+import Envelope from './components/Envelope'
+import Cover from './components/Cover'
+import DateCountdown from './components/DateCountdown'
 import Invocation from './components/Invocation'
-import Hero from './components/Hero'
+import Welcome from './components/Welcome'
+import FamilyCard from './components/FamilyCard'
 import Story from './components/Story'
-import SevenSteps from './components/SevenSteps'
 import Celebrations from './components/Celebrations'
 import Venue from './components/Venue'
-import FamilyInvitation from './components/FamilyInvitation'
-import FamilyBlessings from './components/FamilyBlessings'
-import LittleStars from './components/LittleStars'
 import RSVP from './components/RSVP'
-import ThankYou from './components/ThankYou'
-import Footer from './components/Footer'
+import Blessings from './components/Blessings'
+import Thanks from './components/Thanks'
+import MusicButton from './components/MusicButton'
 
 function App() {
-  const { audioRef, isPlaying, play, toggle } = useBackgroundMusic()
-
-  useEffect(() => {
-    // Browsers block autoplay without a prior gesture; this quietly succeeds
-    // when allowed and otherwise leaves the floating toggle for the guest.
-    play()
-  }, [play])
+  useInvitationEngine()
 
   return (
-    <div className="min-h-screen bg-paper-wash">
-      <audio ref={audioRef} src={musicSrc} loop preload="none" />
-      <PaperTexture />
+    <>
+      <audio id="bgm" src={musicSrc} preload="auto" loop />
 
-      <main>
+      <Envelope />
+
+      <main className="invite" id="invite">
+        <Cover />
+        <DateCountdown />
         <Invocation />
-        <Hero />
+        <Welcome />
+        <FamilyCard />
         <Story />
-        <SevenSteps />
         <Celebrations />
         <Venue />
-        <FamilyInvitation />
-        <FamilyBlessings />
-        <LittleStars />
         <RSVP />
-        <ThankYou />
+        <Blessings />
+        <Thanks />
       </main>
-      <Footer />
 
-      <MusicToggle isPlaying={isPlaying} onToggle={toggle} visible />
-    </div>
+      <MusicButton />
+
+      <div className="grain" aria-hidden="true" />
+    </>
   )
 }
 
