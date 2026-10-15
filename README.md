@@ -58,4 +58,4 @@ Append `?slow=4` to the URL to play the opening sequence four times slower.
 
 All visitor-facing text is Hindi, sourced from the reference project's approved translation
 table (`js/i18n.js`'s `translations.hi`), with one deliberate addition: **Little Stars** lists
-five names — माही, देवांश, तानी, दुग्गू एवं वाणी — rather than the reference's four.
+five names — माही, देवांश, तानी, दुग्गू एवं खुशी — rather than the reference's four.

@@ -29,7 +29,7 @@ export default function Blessings() {
           </g>
         </svg>
         <h3 className="script-title script-title--sm">बाल मनुहार</h3>
-        <p className="stars-names">माही, देवांश, तानी, दुग्गू एवं वाणी</p>
+        <p className="stars-names">माही, देवांश, तानी, दुग्गू एवं खुशी</p>
       </div>
     </section>
   )
